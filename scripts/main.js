@@ -21,7 +21,7 @@
 
 'use strict';
 
-const applicationServerPublicKey = 'BDzJ1MrLWAHOt5ISZLqLthuslGNBYbIiFDJuQA6kH8yzzTvHeqd35wj4lH5CckdcKlZVDBySArSRlkEgEhFwnSc';
+const applicationServerPublicKey = ' AIzaSyA3do9EYO2KwDfYI7vhPEdxsv_eMrnsoZc';
 
 const pushButton = document.querySelector('.js-push-btn');
 
@@ -44,7 +44,7 @@ function urlB64ToUint8Array(base64String) {
 }
 
 
-if ('serviceWorker' in navigator && 'PushManager' in window) {
+if ('serviceWorker' in navigator) {
   console.log('Service Worker and Push is supported');
 
   navigator.serviceWorker.register('sw.js')
