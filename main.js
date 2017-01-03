@@ -35,9 +35,6 @@ function sendSubscriptionToServer(subscription) {
   // For compatibly of Chrome 43, get the endpoint via
   // endpointWorkaround(subscription)
   console.log('TODO: Implement sendSubscriptionToServer()');
-
-  console.log("auth : " + subscription.getKey("auth").length);
-  console.log("key  : " + subscription.getKey("p256dh").length);
   console.log("endpoint  : " + subscription.endpoint);
 
   curlCommandDiv.textContent += "endpoint : " + subscription.endpoint + "\r\n";
