@@ -36,8 +36,13 @@ function sendSubscriptionToServer(subscription) {
   // endpointWorkaround(subscription)
   console.log('TODO: Implement sendSubscriptionToServer()');
 
-  var mergedEndpoint = endpointWorkaround(subscription);
+  console.log("auth : " + subscription.getKey("auth").length);
+  console.log("key  : " + subscription.getKey("p256dh").length);
+  console.log("endpoint  : " + subscription.endpoint);
 
+  curlCommandDiv.textContent += "endpoint : " + subscription.endpoint + "\r\n";
+
+  var mergedEndpoint = endpointWorkaround(subscription);
   // This is just for demo purposes / an easy to test by
   // generating the appropriate cURL command
   showCurlCommand(mergedEndpoint);
@@ -57,11 +62,11 @@ function showCurlCommand(mergedEndpoint) {
   var endpointSections = mergedEndpoint.split('/');
   var subscriptionId = endpointSections[endpointSections.length - 1];
 
-  var curlCommand = 'curl --header "Authorization: key=' + API_KEY +
+  var curlCommand = '\ncurl --header "Authorization: key=' + API_KEY +
     '" --header Content-Type:"application/json" ' + GCM_ENDPOINT +
     ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"';
 
-  curlCommandDiv.textContent = curlCommand;
+  curlCommandDiv.textContent += "curl command : " +  curlCommand;
 }
 
 function unsubscribe() {
@@ -87,6 +92,7 @@ function unsubscribe() {
         // TODO: Make a request to your server to remove
         // the users data from your data store so you
         // don't attempt to send them push messages anymore
+
 
         // We have a subcription, so call unsubscribe on it
         pushSubscription.unsubscribe().then(function() {
